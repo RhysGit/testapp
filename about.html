@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>About - My PWA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="app-header" role="banner">
+        <div class="large-title">About</div>
+    </header>
+    <div class="app-container">
+        <nav class="sidebar-nav" aria-label="Sidebar navigation">
+            <ul>
+                <li><a href="index.html" class="sidebar-link"><span class="tab-icon">&#x1F3E0;</span> Home</a></li>
+                <li><a href="about.html" class="sidebar-link active" aria-current="page"><span class="tab-icon">&#x2139;</span> About</a></li>
+            </ul>
+        </nav>
+        <main id="main" tabindex="-1" class="app-main">
+            <section class="card" aria-labelledby="about-section">
+                <h2 id="about-section">About This App</h2>
+                <p>This is a demo Progressive Web App designed to look and feel like a native iOS app, following Apple’s Human Interface Guidelines. It supports iPad split-view layout, sidebar navigation, and touch-friendly controls.</p>
+            </section>
+        </main>
+    </div>
+    <nav class="tab-bar" aria-label="Tab bar navigation">
+        <a href="index.html" class="tab">
+            <span class="tab-icon">&#x1F3E0;</span>
+            <span class="tab-label">Home</span>
+        </a>
+        <a href="about.html" class="tab active" aria-current="page">
+            <span class="tab-icon">&#x2139;</span>
+            <span class="tab-label">About</span>
+        </a>
+    </nav>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+:root {
+    --primary-bg: #F5F5F7;
+    --card-bg: #fff;
+    --accent: #007AFF;
+    --text-main: #1C1C1E;
+    --text-secondary: #444;
+    --border-radius: 20px;
+    --shadow: 0 2px 8px rgba(60,60,67,0.08);
+    --shadow-hover: 0 8px 24px rgba(60,60,67,0.12);
+    --tab-bar-bg: #fff;
+    --tab-bar-border: #e5e5ea;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    background: var(--primary-bg);
+    min-height: 100vh;
+    color: var(--text-main);
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding-bottom: 56px; /* space for tab bar */
+}
+
+.skipNav {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 100;
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    font-size: 1em;
+}
+.skipNav:focus {
+    left: 16px;
+    top: 16px;
+    width: auto;
+    height: auto;
+    outline: 2px solid var(--accent);
+}
+
+header, footer {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    color: var(--text-main);
+    padding: 1.2em 0 1em 0;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    border: none;
+}
+
+header {
+    font-size: 1.2em;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    margin-top: 0.5em;
+}
+
+.nav-list li a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    transition: background 0.2s;
+    font-size: 1.1em;
+    display: inline-block;
+}
+
+.nav-list li a:hover,
+.nav-list li a[aria-current="page"] {
+    background: rgba(0,122,255,0.08);
+    text-decoration: none;
+}
+
+footer {
+    font-size: 1em;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    margin-top: 2em;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80vh;
+    padding: 2em 1.5em;
+}
+
+.section {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 2em 1.5em;
+    margin: 1.5em 0;
+    width: 100%;
+    max-width: 420px;
+    transition: box-shadow 0.2s;
+    touch-action: manipulation;
+}
+
+.section:hover,
+.section:focus-within {
+    box-shadow: var(--shadow-hover);
+}
+
+h1, h2 {
+    font-weight: 700;
+    font-family: inherit;
+}
+
+h1 {
+    font-size: 2.2em;
+    margin-bottom: 0.2em;
+    letter-spacing: 0.01em;
+}
+
+h2 {
+    font-size: 1.3em;
+    margin-bottom: 0.7em;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+p, .features-list {
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.features-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.5em 0 0 0;
+}
+
+.features-list li {
+    padding: 0.5em 0;
+    border-bottom: 1px solid #eee;
+}
+
+.features-list li:last-child {
+    border-bottom: none;
+}
+
+.share-icon {
+    vertical-align: middle;
+}
+
+.app-header {
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    padding: 24px 0 12px 0;
+    text-align: left;
+    border-bottom: 1px solid var(--tab-bar-border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.large-title {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-left: 24px;
+    letter-spacing: 0.01em;
+}
+
+.app-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80vh;
+    padding: 2em 1.5em 1em 1.5em;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 2em 1.5em;
+    margin: 1.5em 0;
+    width: 100%;
+    max-width: 420px;
+    transition: box-shadow 0.2s;
+    touch-action: manipulation;
+}
+
+.card:hover,
+.card:focus-within {
+    box-shadow: var(--shadow-hover);
+}
+
+.tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: var(--tab-bar-bg);
+    border-top: 1px solid var(--tab-bar-border);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1em;
+    padding: 6px 0 0 0;
+    transition: color 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.tab-icon {
+    font-size: 1.5em;
+    margin-bottom: 2px;
+}
+
+.tab-label {
+    font-size: 0.9em;
+}
+
+.tab.active,
+.tab:active,
+.tab:focus {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.app-container {
+    display: block;
+}
+
+.sidebar-nav {
+    display: none;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1.1em;
+    border-radius: var(--border-radius);
+    margin-bottom: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-link.active,
+.sidebar-link:focus,
+.sidebar-link:hover {
+    background: rgba(0,122,255,0.08);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.sidebar-link .tab-icon {
+    margin-right: 10px;
+    font-size: 1.3em;
+}
+
+body.ipad-layout .app-container {
+    display: flex;
+    flex-direction: row;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    min-height: calc(100vh - 56px);
+    position: static; /* Remove relative positioning for resize to work */
+}
+
+body.ipad-layout .sidebar-nav {
+    display: block;
+    position: fixed;
+    left: 32px;
+    top: 80px;
+    width: 240px;
+    min-width: 180px;
+    max-width: 400px;
+    height: calc(100vh - 56px - 80px);
+    background: rgba(255,255,255,0.55); /* Liquid glass effect */
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 32px rgba(60,60,67,0.22);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 32px 0 0 0;
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    resize: horizontal;
+    overflow: auto;
+    z-index: 1000;
+    transition: box-shadow 0.2s, background 0.3s;
+}
+
+body.ipad-layout .sidebar-nav:active,
+body.ipad-layout .sidebar-nav:focus-within {
+    box-shadow: 0 16px 48px rgba(60,60,67,0.28);
+    background: rgba(255,255,255,0.65);
+}
+
+body.ipad-layout .sidebar-resize-handle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 12px;
+    height: 100%;
+    cursor: ew-resize;
+    z-index: 1010;
+    background: linear-gradient(to left, rgba(0,0,0,0.04) 0%, transparent 100%);
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+body.ipad-layout .sidebar-resize-handle:active {
+    background: linear-gradient(to left, rgba(0,122,255,0.12) 0%, transparent 100%);
+}
+
+body.ipad-layout .app-main {
+    flex: 1;
+    padding: 2em 2em 1em 2em;
+    align-items: flex-start;
+    margin-left: 260px;
+    transition: margin-left 0.2s;
+}
+
+body.ipad-layout .card {
+    max-width: 700px;
+    background: rgba(255,255,255,0.7);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 16px rgba(60,60,67,0.10);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+
+body.ipad-layout .tab-bar {
+    display: none;
+}
+
+/* Optional: Responsive adjustment for smaller screens */
+@media (max-width: 1024px) {
+    body.ipad-layout .app-container {
+        flex-direction: column;
+    }
+    body.ipad-layout .sidebar-nav {
+        position: static;
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        border-radius: 0;
+        box-shadow: none;
+        border-right: none;
+        border-bottom: 1px solid var(--tab-bar-border);
+        min-height: auto;
+        padding: 16px 0 0 0;
+        resize: none;
+    }
+    body.ipad-layout .app-main {
+        margin-left: 0;
+        padding: 1em 0.5em 1em 0.5em;
+    }
+    body.ipad-layout .card {
+        max-width: 98vw;
+    }
+}
+
+.sidebar-resize-handle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    cursor: ew-resize;
+    z-index: 1010;
+}
