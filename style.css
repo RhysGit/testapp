@@ -234,39 +234,67 @@ p, .features-list {
 
 .tab-bar {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    width: calc(100vw - 48px);
+    max-width: 420px;
     height: 56px;
-    background: var(--tab-bar-bg);
-    border-top: 1px solid var(--tab-bar-border);
+    background: rgba(255,255,255,0.55);
+    border-radius: 20px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 4px 32px rgba(60,60,67,0.18);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    z-index: 100;
+    z-index: 1000;
+    transition: background 0.3s, box-shadow 0.2s;
+    padding: 0 12px;
+    overflow: hidden;
+    position: fixed;
+}
+
+.tab-pill {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    width: 0;
+    height: 44px;
+    background: rgba(0,122,255,0.16);
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(0,122,255,0.10);
+    transition: left 0.25s cubic-bezier(.4,0,.2,1), width 0.25s cubic-bezier(.4,0,.2,1);
+    z-index: 1;
+    pointer-events: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .tab-pill {
+        background: rgba(10,132,255,0.22);
+        box-shadow: 0 2px 8px rgba(10,132,255,0.18);
+    }
 }
 
 .tab {
+    position: relative;
     flex: 1;
     text-align: center;
     color: var(--text-secondary);
     text-decoration: none;
     font-size: 1em;
     padding: 6px 0 0 0;
-    transition: color 0.2s;
+    transition: color 0.2s, background 0.2s;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
-}
-
-.tab-icon {
-    font-size: 1.5em;
-    margin-bottom: 2px;
-}
-
-.tab-label {
-    font-size: 0.9em;
+    background: transparent;
+    border: none;
+    border-radius: 999px;
+    margin: 0 4px;
+    z-index: 2;
 }
 
 .tab.active,
@@ -274,6 +302,24 @@ p, .features-list {
 .tab:focus {
     color: var(--accent);
     font-weight: 600;
+    outline: none;
+    /* Remove background here, pill will show instead */
+    background: transparent;
+    box-shadow: none;
+}
+
+/* --- Dark mode glass effect for tab bar --- */
+@media (prefers-color-scheme: dark) {
+    .tab-bar {
+        background: rgba(28,28,30,0.55);
+        border-top: 1px solid rgba(255,255,255,0.08);
+        box-shadow: 0 4px 32px rgba(0,0,0,0.44);
+    }
+    .tab.active,
+    .tab:active,
+    .tab:focus {
+        background: rgba(10,132,255,0.12);
+    }
 }
 
 .app-container {
